@@ -5,7 +5,12 @@ $(function () {
 	var title = $('h1', headerEl); //El segundo parámetro que se envía es el contexto donde debe buscar, en este caso el contexto DEBE SER UN ELEMENTO DEL DOM, NO UN OBJETO DE JQUERY; el elemento del DOM es el elemento[0] del objeto jQuery.
 
 	// console.log(header);
-	console.log(title);
+	console.log(title); 
+	// Esto es el jQuery object [h1, prevObject: r.fn.init[1]]
+	// [
+	// 0: h1,
+	// prevObject: r.fn.init[1]
+	// ]
 })
 
 $(function () {
