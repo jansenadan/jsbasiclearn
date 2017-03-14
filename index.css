@@ -1,4 +1,44 @@
 body {
 	background-color: #bdc3c7;
+	font-family: Roboto;
 	margin: 0;
+}
+
+#app-container {
+	overflow: hidden;
+	width: 100%;
+}
+
+#app-header {
+	background-color: #2ecc71;
+	height: 10vh;
+	position: fixed;
+	width: 100%;
+	text-align: center;
+}
+
+#app-header h1 {
+	color: white;
+	line-height: 10vh;
+	margin: 0;
+}
+
+#app-body {
+	margin: auto;
+	min-height: 75vh;
+	padding-top: 15vh;
+	width: 80%;
+}
+
+#app-footer {
+	width: 100%;
+	min-height: 10vh;
+}
+
+#app-footer p {
+	border-top: 1px solid #7f8c8d;
+	margin: 0 auto;
+	padding-top: 30px;
+	text-align: center;
+	width: 40%;
 }
