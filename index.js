@@ -32,3 +32,15 @@ $(function () {
 
 
 })
+
+
+//Ejemplo de Closure ???
+
+var name = 'Sasha';
+
+function alerta() {
+	alert('Hola' + name);
+}
+
+alerta();
+
