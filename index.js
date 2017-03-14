@@ -1,58 +1,34 @@
 $(function () {
-	var headerEl = document.getElementById('app-header');
-	var header = $('header');
-	var title = $('h1', header[0]); //El segundo parámetro que se envía es el contexto donde debe buscar, en este caso el contexto DEBE SER UN ELEMENTO DEL DOM, NO UN OBJETO DE JQUERY; el elemento del DOM es el elemento[0] del objeto jQuery.
-	var title = $('h1', headerEl); //El segundo parámetro que se envía es el contexto donde debe buscar, en este caso el contexto DEBE SER UN ELEMENTO DEL DOM, NO UN OBJETO DE JQUERY; el elemento del DOM es el elemento[0] del objeto jQuery.
-
-	// console.log(header);
-	console.log(title); 
-	// Esto es el jQuery object [h1, prevObject: r.fn.init[1]]
-	// [
-	// 0: h1,
-	// prevObject: r.fn.init[1]
-	// ]
-})
-
-$(function () {
 	var header = document.getElementById('app-header');
-	var seleccion = $([ document, header]); //Puedo pasar un array de elementos para incluirlos dentro de un objeto de j Query.
-	console.log(seleccion);
+	var seleccion = $([document, header]);
+
+	$('#app-header').find('h1') //esto es más rápido que $('#app-header h1')
+
+	var a = $('<a>', {
+		href: 'http://www.platzi.com',
+		target: '_blank',
+		html: 'ir a Platzi'
+	})
+
+	$('#app-body').append(a);
+
+	// Hay Metodos 'getters' y 'setters'
+	// get
+	console.log($(a).attr('href'));
+
+	//set
+	a.attr({
+		href: 'http://google.com',
+		html: 'Ir a Goggle'
+	})
+
+
+// Estas son 2 formas de hacer lo mismo, una desde el elemento "padre" (al que le quiero insertar un elemento) y la segunda desde el elemento que estoy creando y quiero insertar.
+	$('header#app-header')
+	.append($('<p>', { html: 'Me acaban de crear' }))
+
+	$('<p>', { html: 'Me acaban de crear' })
+	.appendTo($('header#app-header'))
+
+
 })
-
-
-
-$(function () {
-	var header = document.getElementById('app-header');
-	var seleccion = $([ document, header]); //Puedo pasar un array de elementos para incluirlos dentro de un objeto de j Query.
-
-	var formEl = $(':input'); //<input>, <textarea>, <select>
-	
-	var selected = $(':selected');
-
-	var enabled = $(':enabled');
-	var disabled = $(':disabled');
-	var file = $(':file');
-})
-
-
-
-
-
-
-
-
-
-// window.onload = function () {
-// 	alert('loaded')
-// }
-// $.noConflict(); //Si '$' ya está definido, puedo pasarle la función 'noConflict()' para que '$' conserve el valor que se le asignó primero y no sea sobre escrito, esto ews util cuándo algunas librerias usan '$' para definir su función principal
-// jQuery(function () {
-// 	alert('Ready')
-// })
-
-// // esto es igual a escribir:
-// // jQuery(document).ready(function () {
-// // 	alert('Ready')
-// // })
-
-// // Se supone que la función 'ready' de jQuery es más rápida que el 'onload' del document en JS puro (vanilla JS)
