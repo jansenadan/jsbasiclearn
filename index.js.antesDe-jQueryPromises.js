@@ -10,6 +10,7 @@ $(function () {
 		if (loaderEsta == 'none') {
 			$loader.css('display', 'block');
 		}
+		// console.log('renderShows se ejecuta y esto es shows: ', shows)
 		shows.forEach(function(show) {
 			var article = template
 				.replace(':name:', show.name)
@@ -22,6 +23,7 @@ $(function () {
 
 			if (loaderEsta == 'block') {
 				$loader.fadeOut('fast', function() {
+					// console.log('va un show: ', show, ', y esto es un article: ', $article);
 					$tvShowsContainer
 						.append($article.fadeIn('slow'))
 				})
@@ -31,30 +33,39 @@ $(function () {
 			}
 		})
 	}
-
 	// Submit search form
+// function onsubmit (ev) {
+
+// }
+// console.log(this); // aqui 'this' es #document
+
 	$('#app-body')
 		.find('form')
 		.submit(function(ev) {
 			ev.preventDefault();
+			// console.log(this); // aqui 'this' es el elemento seleccionado (es decir el form) NO ES UN jQuery OBJECT
 			var busqueda = $(this)
 				.find('input[type="text"]')
 				.val();
+			// console.log('se hizo submit con el valor: '+ busqueda);
 			$tvShowsContainer.find('.tv-show').remove();
 
-			//Versión Con Promises de jQuery
 			$.ajax({
 				url: 'http://api.tvmaze.com/search/shows',
-				data: { q: busqueda }
-			})
-				.then(function (response/*, textStatus, xhr*/) {
+				data: { q: busqueda },
+				success: function (response, textStatus, xhr) {
+					// console.log(response);
 					var shows = response.map(function (el) {
-						return el.show
+						return el.show;
 					})
-					renderShows(shows)
-				})
+
+					renderShows(shows);
+				}
+			})
+
 		})
 
+		//http://api.tvmaze.com/shows
 		// $.ajax() // llamamos el método 'ajax' de la función 'jQuery'
 
 		var template = '<article class="tv-show">' +
@@ -67,9 +78,14 @@ $(function () {
 					'</div>' +
 				'</article>';
 
-		//Versión Con Promises de jQuery
-		$.ajax('http://api.tvmaze.com/shows')
-			.then(function (shows/*, textStatus, xhr se pueden pasar estos parámetros, pero son opcionales*/) {
+		$.ajax(/*'http://api.tvmaze.com/shows', */{
+			url: 'http://api.tvmaze.com/shows', // aqui tambien puede ir la URL que pasamos cómo primer parametro al método 'ajax'
+			success: function(shows, textStatus, xhr) {
+				// console.log('hizo el primer request: ', shows);
 				renderShows(shows);
-			})
+			}
+		})
 })
+
+// console.log(this); // aqui 'this' es Window
+
