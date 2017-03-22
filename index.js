@@ -6,7 +6,7 @@ $(function () {
 
 	function renderShows(shows) {
 		var loaderEsta = $loader.css('display')
-		console.log('loaderEsta: ', loaderEsta)
+		// console.log('loaderEsta: ', loaderEsta)
 		if (loaderEsta == 'none') {
 			$loader.css('display', 'block');
 		}
@@ -18,7 +18,7 @@ $(function () {
 				.replace(':img alt:', show.name + " Logo")
 			var $article = $(article)
 			$article.hide()
-		console.log('loaderEsta: ', loaderEsta)
+		// console.log('loaderEsta: ', loaderEsta)
 
 			if (loaderEsta == 'block') {
 				$loader.fadeOut('fast', function() {
@@ -67,9 +67,14 @@ $(function () {
 					'</div>' +
 				'</article>';
 
-		//Versión Con Promises de jQuery
-		$.ajax('http://api.tvmaze.com/shows')
-			.then(function (shows/*, textStatus, xhr se pueden pasar estos parámetros, pero son opcionales*/) {
-				renderShows(shows);
-			})
+		if (!localStorage.shows) {
+			//Versión Con Promises de jQuery
+			$.ajax('http://api.tvmaze.com/shows')
+				.then(function (shows/*, textStatus, xhr se pueden pasar estos parámetros, pero son opcionales*/) {
+					localStorage.shows = JSON.stringify(shows);
+					renderShows(shows);
+				})
+		} else {
+			renderShows(JSON.parse(localStorage.shows));
+		}
 })
