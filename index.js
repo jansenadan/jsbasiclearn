@@ -2,7 +2,8 @@
 * Module dependencies
 */
 
-var $ = require('jquery');
+// var $ = require('jquery'); //Sintaxis anterior
+import $ from 'jquery'; //Nueva sintaxis ES2015
 
 
 

@@ -44,3 +44,27 @@ function alerta() {
 
 alerta();
 
+
+
+// package.json 
+{
+  "name": "tvfy",
+  "description": "Una web app para seleccionar tus shows favoritos",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0"
+  },
+  "scripts": {
+    // "public": "if not exist public mkdir public", // Version para windows
+    "public": "mkdir -p public", // Version para Linux Mac
+    "build-js": "browserify -t [ babelify --presets [ es2015 ] ] index.js > public/app.js",
+    // "copy-files": "cp index.css public/app.css && cp index.html public/index.html", // Version para linux y Mac
+    "copy-files": "copy index.css public & copy index.html public & cd public & ren index.css app.css" // Version para WIndows
+  }
+}
+
