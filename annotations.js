@@ -64,6 +64,7 @@ alerta();
     "public": "mkdir -p public", // Version para Linux Mac
     "build-js": "browserify -t [ babelify --presets [ es2015 ] ] index.js > public/app.js",
     // "copy-files": "cp index.css public/app.css && cp index.html public/index.html", // Version para linux y Mac
+    // "copy-files": "cp src/index.css public/app.css && cp src/index.html public/index.html", // Version para linux y Mac
     "copy-files": "copy index.css public & copy index.html public & cd public & ren index.css app.css" // Version para WIndows
   }
 }
