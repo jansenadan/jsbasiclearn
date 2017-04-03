@@ -4,6 +4,17 @@ $(function () {
 			.find('.tv-shows'),
 			$loader = $tvShowsContainer.find('.loader')
 
+	$tvShowsContainer.on('click', 'button.like', function (ev) {
+		var $this = $(this);
+		// $this.animate({
+		// 	'fontSize': '30px'
+		// }, 'fast');
+		// $this.closest('.tv-show').addClass('liked');
+		$this.closest('.tv-show').toggleClass('liked');
+	})
+
+
+
 	function renderShows(shows) {
 		var loaderEsta = $loader.css('display')
 		// console.log('loaderEsta: ', loaderEsta)
@@ -64,6 +75,7 @@ $(function () {
 					'<div class="right info">' +
 						'<h1>:name:</h1>' +
 						'<p>:summary:</p>' +
+						'<button class="like">&hearts;</button>'
 					'</div>' +
 				'</article>';
 
