@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "dependencies": {
     "jquery": "^3.2.1",
+    "page": "^1.7.1",
+    "qs": "^6.4.0",
     "serve": "^5.1.2"
   },
   "devDependencies": {
@@ -13,9 +15,9 @@
   },
   "scripts": {
     "public": "if not exist public mkdir public",
-    "build-js": "browserify -t [ babelify --presets [ es2015 ] ] index.js > public/app.js",
-    "copy-files": "copy index.css public & copy index.html public & cd public & ren index.css app.css",
-    "build": "npm run public & npm run build-js & npm run copy-files",
+    "build-js": "browserify -t [ babelify --presets [ es2015 ] ] src/index.js > public/app.js",
+    "copy-files": "cp src/index.css public/app.css && cp src/index.html public/index.html",
+    "build": "npm run public && npm run build-js && npm run copy-files",
     "serve": "serve public"
   }
 }
