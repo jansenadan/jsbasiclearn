@@ -46,6 +46,15 @@ alerta();
 
 
 
+//El localStorage
+// En el caso de nuestra app la info queda en
+localStorage.shows // y esto es un string, si lo quiero usar como objeto debo 'parsearlo' con JSON.parse(localStorage.shows)
+// Si quiero borrar la info del local localStorage
+delete localStorage.shows
+
+
+
+
 // package.json 
 {
   "name": "tvfy",
